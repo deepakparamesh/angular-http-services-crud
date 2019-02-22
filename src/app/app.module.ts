@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
+import { RouterModule, Router } from '@angular/router';
 import { PostComponent } from './post/post.component';
 
 @NgModule({
@@ -10,7 +11,12 @@ import { PostComponent } from './post/post.component';
     PostComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '', component: AppComponent },
+      { path: 'post', component: PostComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
