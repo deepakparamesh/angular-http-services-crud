@@ -42,7 +42,7 @@ export class PostComponent implements OnInit {
   updatePost(post) {
     this.postService.update(post, JSON.stringify({ isRead: true }))
     .subscribe(
-    updatedPost => { console.log(updatedPost); },
+    updatedPost => { alert('successfully updated as read'); },
     (error: Response) => {
       if (error instanceof MalformError) {
         // this.form.setErrors(error.json)
