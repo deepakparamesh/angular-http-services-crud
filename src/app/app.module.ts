@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Router } from '@angular/router';
 import { PostComponent } from './post/post.component';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app.error-handler';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { PostComponent } from './post/post.component';
       { path: 'post', component: PostComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
